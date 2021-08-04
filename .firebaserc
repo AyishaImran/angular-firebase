@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "arkaiz-adminpanel": {
+      "hosting": {
+        "arkaiz": [
+          "arkaiz-adminpanel"
+        ]
+      }
+    }
+  }
+}

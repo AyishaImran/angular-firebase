@@ -1,0 +1,105 @@
+<mat-toolbar color="none">
+  <mat-toolbar-row>
+    <button mat-mini-fab color="warn" [matMenuTriggerFor]="rootMenu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #rootMenu="matMenu">
+      <div mat-subheader>
+        <button mat-menu-item routerLink="/aboutus">
+          <mat-icon class="circle-link example-icon-link">bookmark</mat-icon>About Us
+        </button>
+      </div>
+      <div mat-subheader *ngIf="(data$ | async)?.addressbook.visible">
+        <button mat-menu-item routerLink="/addressbook">
+          <mat-icon class="circle-link example-icon-link">import_contacts</mat-icon>Address Book
+        </button>
+      </div>
+      <!-- <div mat-subheader *ngIf="(data$ | async)?.addressbook.visible">
+        <button mat-menu-item [matMenuTriggerFor]="mktMenu">
+          <mat-icon class="circle-link example-icon-link">business</mat-icon>Marketing
+        </button>
+      </div>
+      <div mat-subheader *ngIf="(data$ | async)?.addressbook.visible">
+        <button mat-menu-item [matMenuTriggerFor]="bpoMenu">
+          <mat-icon class="circle-link example-icon-link">sms</mat-icon>BPO call center
+        </button>
+      </div> -->
+      <div mat-subheader *ngIf="(data$ | async)?.admin.visible">
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="/admin">
+          <mat-icon class="circle-link example-icon-link">group</mat-icon>Admin
+        </button>
+      </div>
+    </mat-menu>
+    <mat-icon class="example-icon">{{ imageUrl }}</mat-icon>
+    <span matTooltip="About us">{{ pageTitle }}</span><span class="example-spacer"></span>
+    <span matTooltip="Update Settings"><button mat-icon-button routerLink="/settings">
+        <mat-icon>settings</mat-icon>
+      </button></span>
+    <span matTooltip="Help" [matMenuTriggerFor]="helpMenu">
+      <button mat-icon-button>
+        <mat-icon>help</mat-icon>
+      </button>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-menu #helpMenu="matMenu">
+  {{ helpType == "login" ? configData.login : ""}}
+  {{ helpType == "register" ? configData.register : ""}}
+  {{ helpType == "checkin" ? configData.checkin : ""}}
+  {{ helpType == "checkout" ? configData.checkout : ""}}
+  {{ helpType == "aboutus" ? configData.aboutus : ""}}
+  {{ helpType == "employee" ? configData.employee : ""}}
+</mat-menu>
+<mat-menu #mktMenu="matMenu">
+  <div mat-subheader>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/campaign">
+      <mat-icon class="circle-link example-icon-link">business</mat-icon>Campaign
+    </button>
+  </div>
+  <div mat-subheader>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/lead">
+      <mat-icon class="circle-link example-icon-link">business</mat-icon>Leads
+    </button>
+  </div>
+  <div mat-subheader>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/opportunity">
+      <mat-icon class="circle-link example-icon-link">business</mat-icon>Oppurtunities
+    </button>
+  </div>
+</mat-menu>
+<mat-menu #bpoMenu="matMenu">
+  <div mat-subheader>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/appointment">
+      Appointments
+    </button>
+  </div>
+  <div mat-subheader>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/call">
+      Calls, emails, Enquiries
+    </button>
+  </div>
+  <div mat-subheader>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/ticket">
+      Helpdesk Service Tickets
+    </button>
+  </div>
+  <div mat-subheader>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/workorder">
+      Work Orders
+    </button>
+  </div>
+  <div mat-subheader>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/order">
+      Order Fulfilllment
+    </button>
+  </div>
+</mat-menu>
